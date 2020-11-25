@@ -7,12 +7,16 @@
 }
 
 .header-container {
+  width: 100%;
+  justify-content: space-between;
   display: flex;
   flex-direction: row;
+  margin: 0 10% 0 10%;
 }
 
 .header-logo {
-  width: 50px;
+  width: 158px;
+  height: 32px;
 }
 
 .header-search-input {
