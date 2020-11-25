@@ -1,0 +1,23 @@
+.header {
+  width: 100%;
+  background-color: #2e3a53;
+  height: 64px;
+  display: flex;
+  align-items: center;
+}
+
+.header-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.header-logo {
+  width: 50px;
+}
+
+.header-search-input {
+  background: #ffffff;
+  border-radius: 16px;
+  width: 496px;
+  height: 32px;
+}
