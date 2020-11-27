@@ -7,20 +7,23 @@ import { gitApi } from './apiRoot';
 const gitEmail = null;
 const gitPassword = null;
 
+const getGitCredentials = () => {
+  const useGitCredentials = gitEmail && gitPassword;
+
+  if (useGitCredentials) {
+    return `&client_id=${gitEmail}&client_secret=${gitPassword}`;
+  }
+  return '';
+};
+
 export const getUser = async (login: string): Promise<UserDetails> => {
-  const res = await gitApi.get(
-    `/users/${login}${
-      gitEmail && gitPassword ? `?client_id=${gitEmail}&client_secret=${gitPassword}` : ''
-    }`
-  );
+  const res = await gitApi.get(`/users/${login}?${getGitCredentials()}`);
   return res.data;
 };
 
 export const getTopTrendingUsers = async (top: number = 1): Promise<UserDetails[]> => {
   const res = await gitApi.get(
-    `/search/users?q=followers:%3E1000&page=1&per_page=${top}${
-      gitEmail && gitPassword ? `&client_id=${gitEmail}&client_secret=${gitPassword}` : ''
-    }`
+    `/search/users?q=followers:%3E1000&page=1&per_page=${top}${getGitCredentials()}`
   );
 
   const users = await Promise.all<UserDetails>(
@@ -34,9 +37,7 @@ export const getTopTrendingUsers = async (top: number = 1): Promise<UserDetails[
 
 export const getTopActiveUsers = async (top: number = 3): Promise<Repo> => {
   const res = await gitApi.get(
-    `/search/users?q=repos:%3E1000&page=1&per_page=${top}${
-      gitEmail && gitPassword ? `&client_id=${gitEmail}&client_secret=${gitPassword}` : ''
-    }`
+    `/search/users?q=repos:%3E1000&page=1&per_page=${top}${getGitCredentials()}`
   );
   return res.data;
 };
