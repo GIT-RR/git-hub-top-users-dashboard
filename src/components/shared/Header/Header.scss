@@ -1,6 +1,6 @@
 @import '../../../assets/styles/variables.scss';
 
-.header {
+#header {
   width: 100%;
   background-color: $colorDarkBlue;
   height: 64px;
@@ -11,16 +11,15 @@
     width: 100%;
     justify-content: space-between;
     display: flex;
-    flex-direction: row;
     margin: 0 20% 0 20%;
 
-    .header-logo {
+    .logo {
       cursor: pointer;
       width: 158px;
       height: 32px;
     }
 
-    .header-search-input {
+    .search-input {
       background: #ffffff;
       border-radius: 16px;
       width: 496px;

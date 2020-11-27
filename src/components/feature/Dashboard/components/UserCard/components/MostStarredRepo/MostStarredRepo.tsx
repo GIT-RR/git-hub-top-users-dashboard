@@ -1,4 +1,6 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
+import { StarsDisplayer } from '../../../../../../shared';
+import './MostStarredRepo.scss';
 
 interface Props {
   title: string;
@@ -8,12 +10,12 @@ interface Props {
 
 const MostStarredRepo: FC<Props> = ({ title, stars, description }) => {
   return (
-    <div>
-      {title}
-      <br />
-      {stars}
-      <br />
-      {description}
+    <div className='most-starred-repo'>
+      <div className='header'>
+        <div>{title}</div>
+        <StarsDisplayer number={stars} />
+      </div>
+      <div className='body'>{description}</div>
     </div>
   );
 };

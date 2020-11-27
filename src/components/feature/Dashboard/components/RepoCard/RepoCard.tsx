@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import './RepoCard.scss';
-import StarsIcon from '@material-ui/icons/Stars';
+import { StarsDisplayer } from '../../../../shared';
 
 interface Props {
   name: string;
@@ -11,12 +11,9 @@ interface Props {
 const RepoCard: FC<Props> = ({ name, stars, description }) => {
   return (
     <div className='repo-card'>
-      <div className='repo-card-container'>
+      <div className='container'>
         <p className='title'>{name}</p>
-        <p className='stars'>
-          <StarsIcon />
-          {stars}
-        </p>
+        <StarsDisplayer number={stars} />
         <p className='description'>{description}</p>
       </div>
     </div>

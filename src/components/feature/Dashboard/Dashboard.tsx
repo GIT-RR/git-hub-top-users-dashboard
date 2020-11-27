@@ -5,9 +5,9 @@ import './Dashboard.scss';
 
 const Dashboard = () => {
   return (
-    <div>
+    <div id='dashboard'>
       <Header onSearchChange={(searchValue) => console.log(searchValue)} />
-      <div className='dashboard-container'>
+      <div className='container'>
         <LineSection title='Trending Users'>
           <UserCard name='test name' email='test@mail.com' followers={15} />
           <UserCard name='test name' email='test@mail.com' followers={15} />

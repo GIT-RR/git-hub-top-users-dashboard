@@ -9,8 +9,8 @@ interface Props {
 const LineSection: FC<Props> = ({ title, children }) => {
   return (
     <div className='line-section'>
-      <div className='line-section-title '>{title}</div>
-      <div className='line-section-container'>{children}</div>
+      <div className='title '>{title}</div>
+      <div className='container'>{children}</div>
     </div>
   );
 };

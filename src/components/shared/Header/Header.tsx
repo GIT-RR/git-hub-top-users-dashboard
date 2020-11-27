@@ -21,11 +21,11 @@ const Header: FC<Props> = ({ onSearchChange }) => {
   );
 
   return (
-    <div className='header'>
+    <div id='header'>
       <div className='header-container'>
-        <UpHillLogo className='header-logo' />
+        <UpHillLogo className='logo' />
         <Input
-          className='header-search-input'
+          className='search-input'
           onChange={(event) => setSearchValue(event.target.value)}
           placeholder='Search'
           startAdornment={<SearchIcon />}

@@ -46,26 +46,18 @@
       transparent 100%
     );
   }
-  .repo-card-container {
+  > .container {
     margin: 50px 27px;
     font-family: Roboto;
     font-style: normal;
     text-align: center;
 
-    .title {
+    > .title {
       font-size: 18px;
       color: #2e3a53;
     }
 
-    .stars {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 14px;
-      color: #1d42a2;
-    }
-
-    .description {
+    > .description {
       font-size: 14px;
       color: #4f4f4f;
     }

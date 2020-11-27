@@ -1,0 +1,27 @@
+.most-starred-repo {
+  border: 1px solid #1d42a2;
+  box-sizing: border-box;
+  border-radius: 6px;
+  padding: 12px 14px;
+  background: linear-gradient(
+    to right,
+    #1d42a2,
+    #1d42a2 0.5rem,
+    transparent 0.5rem,
+    transparent 100%
+  );
+
+  > .header {
+    width: 100%;
+    color: #1d42a2;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  > .body {
+    font-size: 12px;
+    color: #4f4f4f;
+    margin-top: 14px;
+  }
+}
