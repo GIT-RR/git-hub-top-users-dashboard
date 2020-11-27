@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import './UserCard.scss';
 
 interface Props {
   name: string;
@@ -8,7 +9,7 @@ interface Props {
 
 const UserCard: FC<Props> = ({ name, email, followers }) => {
   return (
-    <div>
+    <div className='user-card'>
       {name}
       <br />
       {email}

@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import './LineSection.scss';
 
 interface Props {
   title: string;
@@ -7,9 +8,9 @@ interface Props {
 
 const LineSection: FC<Props> = ({ title, children }) => {
   return (
-    <div>
-      {title}
-      <div>{children}</div>
+    <div className='line-section'>
+      <div className='line-section-title '>{title}</div>
+      <div className='line-section-container'>{children}</div>
     </div>
   );
 };

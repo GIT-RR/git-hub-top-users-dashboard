@@ -1,0 +1,73 @@
+@import '../../../../../assets/styles/variables.scss';
+
+.repo-card {
+  width: 232px;
+  height: 232px;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px 1px rgba(0, 0, 0, 0.06);
+  border-radius: 6px;
+
+  &:first-child {
+    background: linear-gradient(
+      to bottom,
+      #1d42a2,
+      #1d42a2 0.5rem,
+      transparent 0.5rem,
+      transparent 100%
+    );
+  }
+
+  &:nth-child(2) {
+    background: linear-gradient(
+      to bottom,
+      #2f80ed,
+      #2f80ed 0.5rem,
+      transparent 0.5rem,
+      transparent 100%
+    );
+  }
+
+  &:nth-child(3) {
+    background: linear-gradient(
+      to bottom,
+      #2d9cdb,
+      #2d9cdb 0.5rem,
+      transparent 0.5rem,
+      transparent 100%
+    );
+  }
+
+  &:nth-child(4) {
+    background: linear-gradient(
+      to bottom,
+      #56ccf2,
+      #56ccf2 0.5rem,
+      transparent 0.5rem,
+      transparent 100%
+    );
+  }
+  .repo-card-container {
+    margin: 50px 27px;
+    font-family: Roboto;
+    font-style: normal;
+    text-align: center;
+
+    .title {
+      font-size: 18px;
+      color: #2e3a53;
+    }
+
+    .stars {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 14px;
+      color: #1d42a2;
+    }
+
+    .description {
+      font-size: 14px;
+      color: #4f4f4f;
+    }
+  }
+}
