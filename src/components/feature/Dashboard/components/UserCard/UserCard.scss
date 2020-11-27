@@ -1,3 +1,5 @@
+@import '../../../../../assets//styles/variables.scss';
+
 .user-card {
   width: 320px;
   height: 320px;
@@ -17,6 +19,7 @@
     margin: -50px auto;
     padding: 0 56px;
     text-align: center;
+    color: $colorDarkBlue;
 
     > .avatar {
       z-index: 1;
@@ -31,12 +34,10 @@
       margin-top: 14px;
       margin-bottom: 8px;
       font-size: 16px;
-      color: #2e3a53;
     }
 
     > .email {
       font-size: 14px;
-      color: #2e3a53;
       margin-bottom: 8px;
     }
 
