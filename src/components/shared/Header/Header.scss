@@ -1,0 +1,30 @@
+@import '../../../assets/styles/variables.scss';
+
+.header {
+  width: 100%;
+  background-color: $colorDarkBlue;
+  height: 64px;
+  display: flex;
+  align-items: center;
+
+  .header-container {
+    width: 100%;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    margin: 0 20% 0 20%;
+
+    .header-logo {
+      cursor: pointer;
+      width: 158px;
+      height: 32px;
+    }
+
+    .header-search-input {
+      background: #ffffff;
+      border-radius: 16px;
+      width: 496px;
+      height: 32px;
+    }
+  }
+}

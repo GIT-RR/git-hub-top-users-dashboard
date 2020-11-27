@@ -1,22 +1,24 @@
-import { FC, useCallback } from 'react';
-import './Header.css';
-import { UpHillLogo } from '../../assets/icons';
+import './Header.scss';
+import { UpHillLogo } from '../../../assets/icons';
 import { Input } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
-import { debounce } from '../../../core/debounce';
+import React, { FC } from 'react';
+import { useDebounce } from 'react-use';
 
 interface Props {
   onSearchChange: (value: string) => void;
 }
 
 const Header: FC<Props> = ({ onSearchChange }) => {
-  const handleSearchChange = (value: string) => {
-    debounce(function () {
-      onSearchChange('value');
-    }, 250);
-    // debounce(() => onSearchChange('value'), 1000);
-    // onSearchChange('asd');
-  };
+  const [searchValue, setSearchValue] = React.useState('');
+
+  useDebounce(
+    () => {
+      onSearchChange(searchValue);
+    },
+    1000,
+    [searchValue]
+  );
 
   return (
     <div className='header'>
@@ -24,7 +26,7 @@ const Header: FC<Props> = ({ onSearchChange }) => {
         <UpHillLogo className='header-logo' />
         <Input
           className='header-search-input'
-          onChange={(event) => handleSearchChange(event.target.value)}
+          onChange={(event) => setSearchValue(event.target.value)}
           placeholder='Search'
           startAdornment={<SearchIcon />}
           disableUnderline={true}
