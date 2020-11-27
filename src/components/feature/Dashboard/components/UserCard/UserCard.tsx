@@ -6,7 +6,7 @@ import './UserCard.scss';
 
 interface Props {
   name: string;
-  email: string;
+  email?: string;
   followers: number;
 }
 
@@ -18,7 +18,7 @@ const UserCard: FC<Props> = ({ name, email, followers }) => {
         <div className='avatar'></div>
         <div className='name'>{name}</div>
         <div className='email'>{email}</div>
-        <FollowersDisplayer number={15} />
+        <FollowersDisplayer number={followers} />
         <Divider className='divider' />
         <MostStarredRepo
           title='Hello World'
