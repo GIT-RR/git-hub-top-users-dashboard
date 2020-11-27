@@ -13,11 +13,11 @@ const Dashboard = () => {
           <UserCard name='test name' email='test@mail.com' followers={15} />
           <UserCard name='test name' email='test@mail.com' followers={15} />
         </LineSection>
-        {/* <LineSection title='Most Active Users'>
+        <LineSection title='Most Active Users'>
           <UserCard name='test name' email='test@mail.com' followers={15} />
           <UserCard name='test name' email='test@mail.com' followers={15} />
           <UserCard name='test name' email='test@mail.com' followers={15} />
-        </LineSection> */}
+        </LineSection>
         <LineSection title='Top Repositories'>
           <RepoCard
             name='React'
