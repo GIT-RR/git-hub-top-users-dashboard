@@ -1,11 +1,11 @@
-export interface User {
-  login: string;
+export interface RepoDetailsBE {
+  name: string;
+  description: string;
+  watchers: number;
 }
 
-export interface UserDetails {
-  avatar_url: string;
+export interface RepoDetails {
   name: string;
-  login: string;
-  email?: string;
-  followers: number;
+  description: string;
+  stars: number;
 }

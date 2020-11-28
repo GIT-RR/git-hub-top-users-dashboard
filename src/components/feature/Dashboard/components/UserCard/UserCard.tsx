@@ -8,14 +8,18 @@ interface Props {
   name: string;
   email?: string;
   followers: number;
+  avatar: string;
 }
 
-const UserCard: FC<Props> = ({ name, email, followers }) => {
+const UserCard: FC<Props> = ({ name, email, followers, avatar }) => {
   return (
     <div className='user-card'>
-      <div className='header'></div>
+      {/* <div className='header'> */}
+      <img src={avatar} alt='' className='header' />
+      {/* </div> */}
+
       <div className='container'>
-        <div className='avatar'></div>
+        <img className='avatar' src={avatar} alt='' />
         <div className='name'>{name}</div>
         <div className='email'>{email}</div>
         <FollowersDisplayer number={followers} />
