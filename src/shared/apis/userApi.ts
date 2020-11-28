@@ -23,7 +23,7 @@ export const getTopTrendingUsers = async (
     );
   } else {
     res = await gitApi.get(
-      `/search/users?q=followers:%3E1000&page=1&per_page=${top}${getGitCredentials()}`
+      `/search/users?q=followers:%3E1000&order=follower&sort=desc&page=1&per_page=${top}${getGitCredentials()}`
     );
   }
 
@@ -44,11 +44,11 @@ export const getTopActiveUsers = async (
 
   if (searchInput) {
     res = await gitApi.get(
-      `/search/users?q=fullname:${searchInput}&order=followers&sort=desc&page=1&per_page=${top}${getGitCredentials()}`
+      `/search/users?q=fullname:${searchInput}&order=repos&sort=desc&page=1&per_page=${top}${getGitCredentials()}`
     );
   } else {
     res = await gitApi.get(
-      `/search/users?q=repositories:%3E1000&page=1&per_page=${top}${getGitCredentials()}`
+      `/search/users?q=repos:%3E1000&order=repos&sort=desc&page=1&per_page=${top}$${getGitCredentials()}`
     );
   }
 
