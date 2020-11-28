@@ -8,14 +8,20 @@ import './Dashboard.scss';
 const Dashboard = () => {
   const [searchInput, setSearchInput] = useState('');
 
-  const { data: topTrendingUsers = [] } = useQuery(['topTrendingUsers', searchInput], () =>
-    userApi.getTopTrendingUsers(3, searchInput)
+  const { data: topTrendingUsers = [] } = useQuery(
+    ['topTrendingUsers', searchInput],
+    () => userApi.getTopTrendingUsers(3, searchInput),
+    { retry: false }
   );
-  const { data: topActiveUsers = [] } = useQuery(['topActiveUsers', searchInput], () =>
-    userApi.getTopActiveUsers(3, searchInput)
+  const { data: topActiveUsers = [] } = useQuery(
+    ['topActiveUsers', searchInput],
+    () => userApi.getTopActiveUsers(3, searchInput),
+    { retry: false }
   );
 
-  const { data: topRepos = [] } = useQuery('topRepos', () => repoApi.getTopRepos());
+  const { data: topRepos = [] } = useQuery('topRepos', () => repoApi.getTopRepos(), {
+    retry: false,
+  });
 
   return (
     <div id='dashboard'>

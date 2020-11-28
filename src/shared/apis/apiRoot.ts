@@ -10,6 +10,6 @@ gitApi.interceptors.response.use(function handleData(response) {
 }, handleError);
 
 function handleError(baseError: AxiosError) {
-  console.log('Error');
+  console.log('Error', baseError.message);
   throw baseError;
 }
