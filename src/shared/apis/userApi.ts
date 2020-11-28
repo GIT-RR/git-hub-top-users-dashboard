@@ -15,17 +15,11 @@ export const getTopTrendingUsers = async (
   top: number,
   searchInput: string
 ): Promise<UserDetails[]> => {
-  let res;
-
-  if (searchInput) {
-    res = await gitApi.get(
-      `/search/users?q=fullname:${searchInput}&order=followers&sort=desc&page=1&per_page=${top}${getGitCredentials()}`
-    );
-  } else {
-    res = await gitApi.get(
-      `/search/users?q=followers:%3E1000&order=follower&sort=desc&page=1&per_page=${top}${getGitCredentials()}`
-    );
-  }
+  const res = await gitApi.get(
+    `/search/users?q=followers:>0${
+      searchInput && `+fullname:${searchInput}`
+    }&sort=followers&order=desc&page=1&per_page=${top}${getGitCredentials()}`
+  );
 
   const users = await Promise.all<UserDetails>(
     res.data.items.map(async (user: any) => {
@@ -40,17 +34,11 @@ export const getTopActiveUsers = async (
   top: number,
   searchInput: string
 ): Promise<UserDetails[]> => {
-  let res;
-
-  if (searchInput) {
-    res = await gitApi.get(
-      `/search/users?q=fullname:${searchInput}&order=repos&sort=desc&page=1&per_page=${top}${getGitCredentials()}`
-    );
-  } else {
-    res = await gitApi.get(
-      `/search/users?q=repos:%3E1000&order=repos&sort=desc&page=1&per_page=${top}$${getGitCredentials()}`
-    );
-  }
+  const res = await gitApi.get(
+    `/search/users?q=repos:>0${
+      searchInput && `+fullname:${searchInput}`
+    }&sort=repositories&order=desc&page=1&per_page=${top}${getGitCredentials()}`
+  );
 
   const users = await Promise.all<UserDetails>(
     res.data.items.map(async (user: any) => {
