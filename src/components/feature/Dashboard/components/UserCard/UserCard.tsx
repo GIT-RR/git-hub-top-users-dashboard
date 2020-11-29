@@ -1,17 +1,11 @@
 import { Divider } from '@material-ui/core';
 import { FC } from 'react';
+import { UserDetails } from '../../../../../shared/domain';
 import { FollowersDisplayer } from '../../../../shared';
 import MostStarredRepo from './components/MostStarredRepo/MostStarredRepo';
 import './UserCard.scss';
 
-interface Props {
-  name: string;
-  email?: string;
-  followers: number;
-  avatar: string;
-}
-
-const UserCard: FC<Props> = ({ name, email, followers, avatar }) => {
+const UserCard: FC<UserDetails> = ({ name, email, followers, avatar, topRepo }) => {
   return (
     <div className='user-card'>
       {/* <div className='header'> */}
@@ -24,11 +18,7 @@ const UserCard: FC<Props> = ({ name, email, followers, avatar }) => {
         <div className='email'>{email}</div>
         <FollowersDisplayer number={followers} />
         <Divider className='divider' />
-        <MostStarredRepo
-          title='Hello World'
-          stars={54}
-          description='This is my hello world project!'
-        />
+        {topRepo && <MostStarredRepo {...topRepo} />}
       </div>
     </div>
   );

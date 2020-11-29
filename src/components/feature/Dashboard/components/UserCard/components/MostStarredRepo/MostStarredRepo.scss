@@ -19,6 +19,12 @@
     font-size: 14px;
     display: flex;
     justify-content: space-between;
+
+    // > div {
+    //   overflow: hidden;
+    //   white-space: nowrap;
+    //   text-overflow: ellipsis;
+    // }
   }
 
   > .body {

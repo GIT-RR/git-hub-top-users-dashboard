@@ -1,14 +1,23 @@
-import { UserDetails, UserDetailsBE } from '../domain';
+import { RepoDetails, RepoDetailsBE, UserDetails, UserDetailsBE } from '../domain';
 import { gitApi } from './apiRoot';
+import { getUserTopRepo } from './repoApi';
 import { getGitCredentials } from './utils';
 
-export const userMapper = (user: UserDetailsBE): UserDetails => {
-  return { ...user, avatar: user.avatar_url };
+export const userMapper = (user: UserDetailsBE, topRepo: RepoDetails): UserDetails => {
+  return {
+    avatar: user.avatar_url,
+    name: user.name,
+    userName: user.login,
+    email: user.email,
+    followers: user.followers,
+    topRepo: topRepo,
+  };
 };
 
-export const getUser = async (login: string): Promise<UserDetails> => {
-  const res = await gitApi.get(`/users/${login}?${getGitCredentials()}`);
-  return userMapper(res.data);
+export const getUserDetails = async (login: string): Promise<UserDetails> => {
+  const { data: userDetais } = await gitApi.get(`/users/${login}?${getGitCredentials()}`);
+  const topRepoDetails = await getUserTopRepo(login);
+  return userMapper(userDetais, topRepoDetails);
 };
 
 export const getTopTrendingUsers = async (
@@ -23,10 +32,9 @@ export const getTopTrendingUsers = async (
 
   const users = await Promise.all<UserDetails>(
     res.data.items.map(async (user: any) => {
-      return await getUser(user.login);
+      return await getUserDetails(user.login);
     })
   );
-
   return users;
 };
 
@@ -42,7 +50,7 @@ export const getTopActiveUsers = async (
 
   const users = await Promise.all<UserDetails>(
     res.data.items.map(async (user: any) => {
-      return await getUser(user.login);
+      return await getUserDetails(user.login);
     })
   );
 

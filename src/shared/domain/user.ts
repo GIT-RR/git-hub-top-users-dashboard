@@ -1,3 +1,5 @@
+import { RepoDetails } from '.';
+
 export interface UserDetailsBE {
   avatar_url: string;
   name: string;
@@ -9,7 +11,8 @@ export interface UserDetailsBE {
 export interface UserDetails {
   avatar: string;
   name: string;
-  login: string;
+  userName: string;
   email?: string;
   followers: number;
+  topRepo?: RepoDetails | null;
 }

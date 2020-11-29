@@ -24,3 +24,10 @@ export const getTopRepos = async (top: number = 4): Promise<RepoDetails[]> => {
 
   return repos;
 };
+
+export const getUserTopRepo = async (login: string): Promise<RepoDetails> => {
+  const res = await gitApi.get(
+    `/users/${login}/repos?sort=watchers&order=desc&page=1&per_page=1${getGitCredentials()}`
+  );
+  return repoMapper(res.data[0]);
+};
