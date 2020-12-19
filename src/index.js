@@ -2,16 +2,32 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { QueryCache, ReactQueryCacheProvider, ReactQueryConfigProvider } from 'react-query';
+
+const queryCache = new QueryCache({
+  defaultConfig: {
+    queries: {
+      suspense: false,
+      retry: false,
+      cacheTime: 5 * 60 * 1000,
+    },
+  },
+});
+
+const overrides = {
+  queries: {
+    suspense: false,
+  },
+  mutations: {
+    suspense: false,
+  },
+};
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <ReactQueryCacheProvider queryCache={queryCache}>
+    <ReactQueryConfigProvider config={overrides}>
+      <App />
+    </ReactQueryConfigProvider>
+  </ReactQueryCacheProvider>,
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
